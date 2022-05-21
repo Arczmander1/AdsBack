@@ -1,6 +1,7 @@
 import express from "express";   // import expressa
 import cors from "cors";    // w celu komunikacji z frontem
-import 'express-async-errors';   //
+import 'express-async-errors';
+import {handleError} from "./utils/errors";   //
 
 const app = express();    // tworzenie apki ekspresowej
 
@@ -10,6 +11,14 @@ app.use(cors({   // importowanie w celu korzystania z modulów, ktore zaimportow
 }));
 app.use(express.json());   // rozkodowanie komunikacji jsonowej miedzy FE i BE
 
-app.listen(3001, '0.0.0.0', ()=>{
+// Routers... sciezki
+
+app.get('/', async (req, res) => {
+    throw new Error('error');
+});
+
+app.use(handleError);
+
+app.listen(3001, '0.0.0.0', () => {
     console.log('listening on port http://localhost:3001')
 })  // uruchomienie apki - port 3000, a nie 3001, poniewaz 3001 jest zajety przez reacta
