@@ -1,5 +1,5 @@
 import {AdRecord} from "../records/ad.record";
-import exp from "constants";
+
 
 test('AdRecord returns data from database for one entry',async ()=>{
    const ad = await  AdRecord.getOne('abc')

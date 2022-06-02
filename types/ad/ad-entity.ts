@@ -9,6 +9,6 @@ export interface AdEntity {
     description: string;
     price: number;
     url: string;
-    lat: number;   // szerokosc
-    lon: number;   // wysokosc geograficzna
+    lat: number;
+    lon: number;
 }

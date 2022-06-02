@@ -1,10 +1,10 @@
-import {createPool} from "mysql2/promise";   // pula połączeń wersja promisowa
+import {createPool} from "mysql2/promise";
 
-export const pool = createPool({    // konfiguracja
+export const pool = createPool({
     host: 'localhost',
     user: 'root',
-    database: 'ads',     // baza danych z jaka sie laczymy
-    // password: 'asasda'        // hasel tak nie przechowujemy, chyba ze dodamy do gitignore
-    namedPlaceholders: true,    // uzywanie placeholderow czyli miejsc ktore pozwalaja nam bezpiecznieprzechowywac dane
-    decimalNumbers: true       // liczby maja byc liczbami
+    database: 'ads',
+    // password: 'asasda'
+    namedPlaceholders: true,
+    decimalNumbers: true
 })
