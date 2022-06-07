@@ -15,12 +15,6 @@ app.use(rateLimit({
     max: 100,
 }));
 
-// Routers... sciezki
-
-// app.get('/', async (req, res) => {
-//     throw new Error('error');
-// });
-
 app.use(handleError);
 
 app.listen(3001, '0.0.0.0', () => {

@@ -6,6 +6,15 @@ afterAll(async () => {
    await pool.end();
 });
 
+const defaultObj = {
+   name: 'Test Name',
+   description: 'Blah',
+   lat: 9,
+   lon: 9,
+   url: 'https//wp.pl',
+   price: 0,
+};
+
 test('AdRecord.getOne returns data from database for one entry',async ()=>{
    const ad = await  AdRecord.getOne('abc')
 
@@ -44,4 +53,27 @@ test ('AdRecord.findAll returns small amount of data', async ()=>{
 
    expect((ads[0] as AdEntity).price).toBeUndefined();
    expect((ads[0] as AdEntity).description).toBeUndefined();
+});
+
+test ('AdRecord.insert returns new UUID', async ()=>{
+   const ad = new AdRecord(defaultObj);
+
+   await ad.insert();
+
+   expect(ad.id).toBeDefined();
+   expect(typeof ad.id).toBe('string');
+
+});
+
+test ('AdRecord.insert inserts data to database', async ()=>{
+
+   const ad = new AdRecord(defaultObj);
+   await ad.insert();
+
+const foundAd = await AdRecord.getOne(ad.id);
+
+expect(foundAd).toBeDefined();
+expect(foundAd).not.toBeNull();
+expect(foundAd.id).toBe(ad.id);
+
 });
