@@ -10,16 +10,16 @@ app.use(cors({
     origin: 'http://localhost:3000'
 }));
 app.use(express.json());
-app.use(rateLimit ({
+app.use(rateLimit({
     windowMs: 5 * 60 * 1000,
     max: 100,
 }));
 
 // Routers... sciezki
 
-app.get('/', async (req, res) => {
-    throw new Error('error');
-});
+// app.get('/', async (req, res) => {
+//     throw new Error('error');
+// });
 
 app.use(handleError);
 
